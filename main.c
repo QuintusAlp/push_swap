@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:51:34 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/06/27 15:11:43 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:41:25 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,7 @@ int	main(int argc, char **argv)
 	b = NULL;
 	ft_parsing(&a, argv, argc);
 	if (ft_istrim(&a))
-		return (0);
-	else if (ft_lstsize(a) <= 3)
-		ft_algorithme_01(&a, &b);
-	else if (ft_lstsize(a) > 5)
-		ft_algorithme_03(&a, &b);
-	else
-		ft_algorithme_00(&a, &b);
-		
-	ft_lstclear(&a, ft_freecontent);
-	ft_lstclear(&b, ft_freecontent);
-	//system("leaks push_swap");
-	return(0);
+		return (ft_lstclear(&a, ft_freecontent), 0);
+	ft_algorithme_03(&a, &b);
+	return(ft_lstclear(&a, ft_freecontent),ft_lstclear(&b, ft_freecontent), 0);
 }

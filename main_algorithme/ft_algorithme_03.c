@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 20:05:58 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/06/22 13:35:48 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:27:37 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,42 @@ int	ft_chunk(t_list **lst)
 	else
 		return (4);
 }
+//gerer les - de 5
+void	ft_last3(t_list **a, t_list **b)
+{
+	t_list *element1;
+	t_list *element2;
+	t_list *element3;
 
+	element1 = *a;
+	element2 = (*a)->next;
+	element3 = ((*a)->next)->next;
+	if (element2->simplified < element1->simplified && element2->simplified < element3->simplified)
+		ft_instructions("sa", a, b);
+	if (element2->simplified < element1->simplified && element2->simplified > element3->simplified)
+	{
+		ft_instructions("sa", a, b);
+		ft_instructions("rra", a, b);
+	}
+	if (element2->simplified > element1->simplified && element2->simplified > element3->simplified)
+	{
+		ft_instructions("sa", a, b);
+		ft_instructions("ra", a, b);
+	}
+}
+void	ft_last5(t_list **a, t_list **b)
+{
+	if (ft_lstsize(*a) > 3)
+	{
+		ft_instructions("pb", a, b);
+		ft_instructions("pb", a, b);
+		ft_last3(a, b);
+	}
+	else
+		ft_last3(a, b);;
+	
+}
+//----------
 void	ft_algorithme_03(t_list **a, t_list **b)
 {
 	int	chunk_i;
@@ -77,7 +112,7 @@ void	ft_algorithme_03(t_list **a, t_list **b)
 	chunk = 0;
 	chunk_i = ft_lstsize(*a) / ft_chunk(a);
 	ft_simplified(a);
-	while (*a != NULL)
+	while (ft_lstsize(*a) > 5)
 	{
 		median = (chunk + (chunk + chunk_i)) / 2;
 		chunk += chunk_i;
@@ -94,5 +129,6 @@ void	ft_algorithme_03(t_list **a, t_list **b)
 			ft_verif_topvalue_median(a, b, median, chunk);
 		}
 	}
+	ft_last5(a, b);
 	ft_push_b_to_a(a, b);
 }
