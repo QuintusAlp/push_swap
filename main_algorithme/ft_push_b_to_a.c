@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 12:54:41 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/02 15:05:32 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/09 19:22:35 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ void	ft_push_b_to_a(t_list **a, t_list **b)
 	int	maxindex;
 	int	max_1;
 	int	max_2;
-
+	ft_printlst(b);
+	if (ft_lstsize(*b) == 1)
+		return(ft_instructions("pa", a, b));
 	max_1 = ft_lstsize(*b) - 1;
 	max_2 = ft_lstsize(*b) - 2;
 	while (*b != NULL)

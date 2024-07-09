@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:51:34 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/06/28 13:41:25 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/09 20:00:44 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@ int ft_istrim(t_list **a)
 	}
 	return (1);
 }
-
+void	ft_printlst(t_list **a)
+{
+	t_list *element = *a;
+	while(element)
+	{
+		printf("%d", element->simplified);
+		element = element->next;
+	}
+}
 void	ft_parsing(t_list **a, char **argv, int argc)
 {
 	char	**spl;
@@ -68,6 +76,8 @@ int	main(int argc, char **argv)
 	ft_parsing(&a, argv, argc);
 	if (ft_istrim(&a))
 		return (ft_lstclear(&a, ft_freecontent), 0);
+	ft_simplified(&a);
 	ft_algorithme_03(&a, &b);
+	
 	return(ft_lstclear(&a, ft_freecontent),ft_lstclear(&b, ft_freecontent), 0);
 }

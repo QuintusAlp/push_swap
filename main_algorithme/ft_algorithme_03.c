@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 20:05:58 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/02 16:03:42 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/09 20:02:23 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	ft_last3(t_list **a, t_list **b)
 	element1 = (*a)->simplified;
 	element2 = ((*a)->next)->simplified;
 	element3 = (((*a)->next)->next)->simplified;
+	if (ft_istrim(a))
+		return ;
 	if (element1 > element2 && element1 < element3)
 		ft_instructions("sa", a, b);
 	if (element1 > element2 && element1 > element3 && element2 > element3)
@@ -100,14 +102,8 @@ void	ft_last5(t_list **a, t_list **b)
 {
 	if (ft_lstsize(*a) > 3)
 	{
-		ft_instructions("pb", a, b);
-		ft_instructions("pb", a, b);
-		if ((*a)->simplified > ((*a)->next)->simplified)
-			ft_instructions("rb", a, b);
-		ft_last3(a, b);
-		while ((*a)->simplified < (*b)->simplified)
-			ft_instructions("ra", a, b);
-		ft_instructions("pa", a, b);
+		//ft_last3(a, b);
+		ft_algorithme_00(a, b);
 	}
 	else
 		ft_last3(a, b);
@@ -150,6 +146,18 @@ int ft_intchr(int i, int *array, int size)
 	return (0);
 }
 //----------
+void ft_printtab(int *array)
+{
+	int i = 0;
+	while(i < 5)
+	{
+		ft_printf("%d", array[i]);
+		i++;
+	}
+	ft_printf("\n");
+	
+}
+//-----
 void	ft_algorithme_03(t_list **a, t_list **b)
 {
 	int	chunk_i;
@@ -158,32 +166,32 @@ void	ft_algorithme_03(t_list **a, t_list **b)
 	int	*array;
 
 	array = ft_fiveLastValues(a);
+	//ft_printlst(a);
 	chunk = 0;
 	chunk_i = ft_lstsize(*a) / ft_chunk(a);
-	ft_simplified(a);
 	while (ft_lstsize(*a) > 5)
 	{
 		median = (chunk + (chunk + chunk_i)) / 2;
 		chunk += chunk_i;
 		while (ft_element_lower(a, chunk) && ft_lstsize(*a) > 5)
 		{
-			while (!ft_frst_lower(a, chunk))
+			while (!ft_frst_lower(a, chunk) && ft_intchr((*a)->simplified, array, 5))
 			{
-				if (ft_find_closerindex(a, chunk) < ft_lstsize(*a) / 2)
+				if (ft_find_closerindex(a, chunk, array) < ft_lstsize(*a) / 2)
 					ft_instructions("ra", a, b);
 				else
 					ft_instructions("rra", a, b);
 			}
-			if (!ft_intchr((*a)->simplified, array, 5))
-			{
 				ft_instructions("pb", a, b);
 				ft_verif_topvalue_median(a, b, median, chunk);
-			}
-			else
-				ft_instructions("ra", a, b);
 		}
 	}
 	ft_last5(a, b);
 	free(array);
+	ft_printlst(a);
+	printf("\n");
+	ft_printlst(b);
 	//ft_push_b_to_a(a, b);
+	
+	
 }

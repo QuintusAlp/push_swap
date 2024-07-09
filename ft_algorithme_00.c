@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 13:21:01 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/06/20 15:30:45 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/09 19:05:50 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_list	*ft_findmin(t_list **lst)
 	min = *lst;
 	while (element)
 	{
-		if (ft_atoi(element->content) < ft_atoi(min->content))
+		if (element->simplified < min->simplified)
 			min = element;
 		element = element->next;
 	}
@@ -70,8 +70,8 @@ void	ft_algorithme_00(t_list **a, t_list **b)
 {
 	int	i;
 	int	minindex;
-
-	while (*a != NULL)
+	int k = 0;
+	while (*a != NULL && k < 2)
 	{
 		minindex = ft_elementindex(ft_findmin(a), a);
 		i = ft_check_begin_min(a);
@@ -84,7 +84,13 @@ void	ft_algorithme_00(t_list **a, t_list **b)
 			i = ft_check_begin_min(a);
 		}
 		ft_instructions("pb", a, b);
+		k++;
 	}
-	while (*b != NULL)
+	ft_last3(a, b);
+	k = 0;
+	while (*b != NULL && k < 2)
+	{
 		ft_instructions("pa", a, b);
+		k++;
+	}
 }

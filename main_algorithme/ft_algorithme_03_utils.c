@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:33:18 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/06/22 13:33:48 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/09 19:40:06 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_frst_lower(t_list **lst, int chunk)
 		return (0);
 }
 
-int	ft_find_closerindex(t_list **lst, int chunk)
+int	ft_find_closerindex(t_list **lst, int chunk, int *array)
 {
 	int		index;
 	t_list	*element;
@@ -48,8 +48,9 @@ int	ft_find_closerindex(t_list **lst, int chunk)
 	element = *lst;
 	while (element)
 	{
-		if (element->simplified < chunk)
+		if (element->simplified < chunk && !ft_intchr(element->simplified, array, 5))
 		{
+			ft_printf("e: %d\n", element->simplified);
 			new_cost = ft_elementcost(element, lst);
 			if (new_cost < cost)
 			{
