@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:51:34 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/15 14:22:14 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:42:06 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,23 @@ int	ft_istrim(t_list **a)
 
 void	ft_freecontent(void *content)
 {
-	(void) content;
+	//(void) content;
+	free(content);
+}
+
+void	ft_free_spl(char **spl)
+{
+	int	i;
+
+	if (!spl)
+		return ;
+	i = 0;
+	while(spl[i])
+	{
+		free(&spl[i]);
+		i++;
+	}
+	free(spl);
 }
 
 void	ft_parsing(t_list **a, char **argv, int argc)

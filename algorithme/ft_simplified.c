@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:31:27 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/06/22 13:41:48 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:44:35 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ void	ft_simplified(t_list **a)
 	numbers = ft_list_tab(*a);
 	ft_trimtab(numbers, ft_lstsize(*a));
 	ft_lst_spfelement(a, numbers);
+	free(numbers);
 }
