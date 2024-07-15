@@ -50,7 +50,6 @@ int	ft_find_closerindex(t_list **lst, int chunk, int *array)
 	{
 		if (element->simplified < chunk && !ft_intchr(element->simplified, array, 5))
 		{
-			ft_printf("e: %d\n", element->simplified);
 			new_cost = ft_elementcost(element, lst);
 			if (new_cost < cost)
 			{

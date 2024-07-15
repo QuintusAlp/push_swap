@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:51:34 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/09 20:00:44 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/15 12:05:50 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,17 @@ void	ft_printlst(t_list **a)
 	t_list *element = *a;
 	while(element)
 	{
-		printf("%d", element->simplified);
+		printf("%d ", element->simplified);
 		element = element->next;
 	}
 }
+
+void	ft_freecontent(void *content)
+{
+	free(content);
+	//(void)content;
+}
+
 void	ft_parsing(t_list **a, char **argv, int argc)
 {
 	char	**spl;
@@ -52,6 +59,7 @@ void	ft_parsing(t_list **a, char **argv, int argc)
 			if (!ft_checkerros(spl[j], a))
 			{
 				write(2, "Error\n", 6);
+				ft_lstclear(a, ft_freecontent);
 				exit (1);
 			}
 			ft_lstadd_back(a, ft_lstnew(spl[j]));
@@ -59,11 +67,6 @@ void	ft_parsing(t_list **a, char **argv, int argc)
 		}
 		i++;
 	}
-}
-
-void	ft_freecontent(void *content)
-{
-	(void)content;
 }
 
 int	main(int argc, char **argv)
@@ -78,6 +81,5 @@ int	main(int argc, char **argv)
 		return (ft_lstclear(&a, ft_freecontent), 0);
 	ft_simplified(&a);
 	ft_algorithme_03(&a, &b);
-	
-	return(ft_lstclear(&a, ft_freecontent),ft_lstclear(&b, ft_freecontent), 0);
+	return(ft_lstclear(&a, ft_freecontent), ft_lstclear(&b, ft_freecontent), 0);
 }

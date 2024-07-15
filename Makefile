@@ -1,9 +1,7 @@
 SRCS = 	main.c \
 		instructions/ft_instructions.c instructions/ft_instructions_utils.c  instructions/ft_instructions_utils2.c\
-		main_algorithme/ft_algorithme_03.c  main_algorithme/ft_algorithme_03_utils.c main_algorithme/ft_simplified.c  ft_algorithme_00.c ft_algorithme_01.c ft_checkerrors.c main_algorithme/ft_push_b_to_a.c
-# SRCS_BONNUS = checker/checker.c checker/checker_utils.c \
-# 				instructions/ft_instructions.c instructions/ft_instructions_utils.c \
-# 				ft_checkerrors.c 
+		algorithme/ft_algorithme_03.c  algorithme/ft_algorithme_03_utils.c algorithme/ft_simplified.c ft_checkerrors.c algorithme/ft_push_b_to_a.c \
+		ft_algorithme_00.c
 
 OBJDIR = objets
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
@@ -22,18 +20,9 @@ NC = \033[0m
 
 all: titre ${NAME}
 
-
-
-
 $(OBJDIR)/%.o: %.c
-	@mkdir -p $(OBJDIR) $(OBJDIR)/instructions $(OBJDIR)/checker $(OBJDIR)/main_algorithme 
+	@mkdir -p $(OBJDIR) $(OBJDIR)/instructions $(OBJDIR)/checker $(OBJDIR)/algorithme 
 	@${CC} ${CFLAGS} -I ${INCS} -c $< -o $@
-
-# bonnus: titre ${NAME} ${OBJS_BONNUS}
-# 	@${LIB}
-# 	@echo "${GREEN}compiling BONNUS...${NC}"
-# 	@${CC} ${CFLAGS} ${OBJS_BONNUS} -L./libft -lft -o mychecker
-	
 
 ${NAME}: ${OBJS}
 	@${LIB}
@@ -43,7 +32,7 @@ ${NAME}: ${OBJS}
 	 50 / $(words $(SRCS))))) $$(find $(OBJDIR) -type f -name '*.o' | wc -l) $(words $(SRCS))
 	@echo "\n${BLUE} ./push_swap [parametters] ready to use ${NC}"
 
-	
+
 titre:
 	@echo "\n"
 	@echo "${BLUE}██████  ██    ██ ███████ ██   ██         ███████ ██     ██  █████  ██████ "
@@ -52,6 +41,7 @@ titre:
 	@echo "██      ██    ██      ██ ██   ██              ██ ██ ███ ██ ██   ██ ██      "
 	@echo "██       ██████  ███████ ██   ██ ███████ ███████  ███ ███  ██   ██ ██      "
 	@echo "\n \n"
+
 clean:
 	@${RM} -r ${OBJDIR}
 	@make clean -C ./libft

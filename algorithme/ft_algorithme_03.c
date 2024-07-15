@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 20:05:58 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/09 20:02:23 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:55:02 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,7 @@ void	ft_last3(t_list **a, t_list **b)
 void	ft_last5(t_list **a, t_list **b)
 {
 	if (ft_lstsize(*a) > 3)
-	{
-		//ft_last3(a, b);
 		ft_algorithme_00(a, b);
-	}
 	else
 		ft_last3(a, b);
 	
@@ -155,7 +152,6 @@ void ft_printtab(int *array)
 		i++;
 	}
 	ft_printf("\n");
-	
 }
 //-----
 void	ft_algorithme_03(t_list **a, t_list **b)
@@ -166,7 +162,6 @@ void	ft_algorithme_03(t_list **a, t_list **b)
 	int	*array;
 
 	array = ft_fiveLastValues(a);
-	//ft_printlst(a);
 	chunk = 0;
 	chunk_i = ft_lstsize(*a) / ft_chunk(a);
 	while (ft_lstsize(*a) > 5)
@@ -175,7 +170,7 @@ void	ft_algorithme_03(t_list **a, t_list **b)
 		chunk += chunk_i;
 		while (ft_element_lower(a, chunk) && ft_lstsize(*a) > 5)
 		{
-			while (!ft_frst_lower(a, chunk) && ft_intchr((*a)->simplified, array, 5))
+			while (!ft_frst_lower(a, chunk) || ft_intchr((*a)->simplified, array, 5))
 			{
 				if (ft_find_closerindex(a, chunk, array) < ft_lstsize(*a) / 2)
 					ft_instructions("ra", a, b);
@@ -187,11 +182,6 @@ void	ft_algorithme_03(t_list **a, t_list **b)
 		}
 	}
 	ft_last5(a, b);
+	ft_push_b_to_a(a, b);
 	free(array);
-	ft_printlst(a);
-	printf("\n");
-	ft_printlst(b);
-	//ft_push_b_to_a(a, b);
-	
-	
 }

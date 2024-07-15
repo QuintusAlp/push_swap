@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 11:22:15 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/06/22 11:22:53 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:49:42 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	ft_rev_r(t_list **a, char pile)
 {
 	ft_reverse_rotate(a);
-	printf("rr%c\n", pile);
+	ft_printf("rr%c\n", pile);
 }
 
 void	ft_rrr(t_list **a, t_list **b)
 {
 	ft_rev_r(a, 'a');
 	ft_rev_r(b, 'b');
-	printf("rrr\n");
+	ft_printf("rrr\n");
 }
 
 void	ft_instructions(char *str, t_list **a, t_list **b)
