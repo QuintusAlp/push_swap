@@ -6,34 +6,47 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 13:33:18 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/09 19:40:06 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/15 13:43:21 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_push_swap.h"
 
-int	ft_element_lower(t_list **list, int max)
+int	ft_check_begin_max(t_list **lst)
 {
-	t_list	*element;
+	int		value;
+	t_list	*tmp;
 
-	element = *list;
-	while (element)
+	value = ft_atoi((*lst)->content);
+	tmp = *lst;
+	while (tmp != NULL)
 	{
-		if (element->simplified < max)
-			return (1);
-		element = element->next;
+		if (ft_atoi(tmp->content) > value)
+			return (0);
+		tmp = tmp->next;
 	}
-	return (0);
+	return (1);
 }
 
-int	ft_frst_lower(t_list **lst, int chunk)
+int	ft_check_begin_oneofmax(t_list **lst)
 {
-	if (*lst == NULL)
+	int		value;
+	int		nbr_sup;
+	t_list	*tmp;
+
+	value = ft_atoi((*lst)->content);
+	nbr_sup = 0;
+	tmp = *lst;
+	while (tmp != NULL)
+	{
+		if (ft_atoi(tmp->content) > value)
+			nbr_sup += 1;
+		tmp = tmp->next;
+	}
+	if (nbr_sup > 1)
 		return (0);
-	if ((*lst)->simplified < chunk)
-		return (1);
 	else
-		return (0);
+		return (1);
 }
 
 int	ft_find_closerindex(t_list **lst, int chunk, int *array)
@@ -48,7 +61,8 @@ int	ft_find_closerindex(t_list **lst, int chunk, int *array)
 	element = *lst;
 	while (element)
 	{
-		if (element->simplified < chunk && !ft_intchr(element->simplified, array, 5))
+		if (element->simplified < chunk
+			&& !ft_intchr(element->simplified, array, 5))
 		{
 			new_cost = ft_elementcost(element, lst);
 			if (new_cost < cost)

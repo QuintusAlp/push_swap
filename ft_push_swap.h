@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:55:21 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/09 19:31:29 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/15 13:52:03 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,17 @@ void	ft_algorithme_00(t_list **a, t_list **b);
 //--for the tree last
 void	ft_last3(t_list **a, t_list **b);
 //--verify if A is trim 
-int ft_istrim(t_list **a);
+int		ft_istrim(t_list **a);
 //int chr
-int ft_intchr(int i, int *array, int size);
+int		ft_intchr(int i, int *array, int size);
 //--01--
 void	ft_algorithme_01(t_list **a, t_list **b);
 //--simplified the numbers--
 void	ft_simplified(t_list **a);
 //--03 - QuickSort--
 void	ft_algorithme_03(t_list **a, t_list **b);
-void	ft_push_b_to_a(t_list **a, t_list **b);
+void	ft_push_a_to_b(t_list **a, t_list **b, int *array);
+void	ft_push_b_to_a(t_list **a, t_list **b, int max_1, int max_2);
 int		ft_elementcost(t_list *element, t_list **lst);
 //--utils--
 int		ft_element_lower(t_list **list, int max);

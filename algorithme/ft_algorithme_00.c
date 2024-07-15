@@ -6,11 +6,11 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 13:21:01 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/09 19:05:50 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:13:33 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "../ft_push_swap.h"
 
 int	ft_check_begin_min(t_list **lst)
 {
@@ -70,7 +70,9 @@ void	ft_algorithme_00(t_list **a, t_list **b)
 {
 	int	i;
 	int	minindex;
-	int k = 0;
+	int	k;
+
+	k = 0;
 	while (*a != NULL && k < 2)
 	{
 		minindex = ft_elementindex(ft_findmin(a), a);
@@ -87,10 +89,7 @@ void	ft_algorithme_00(t_list **a, t_list **b)
 		k++;
 	}
 	ft_last3(a, b);
-	k = 0;
-	while (*b != NULL && k < 2)
-	{
+	k = -1;
+	while (k++, *b != NULL && k < 2)
 		ft_instructions("pa", a, b);
-		k++;
-	}
 }
