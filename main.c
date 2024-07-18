@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:51:34 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/15 15:42:06 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:14:03 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_parsing(t_list **a, char **argv, int argc)
 		i++;
 	}
 }
-
+//test pour le git push
 int	main(int argc, char **argv)
 {
 	t_list	*a;
