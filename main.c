@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:51:34 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/18 10:14:03 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:27:51 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_free_spl(char **spl)
 	i = 0;
 	while(spl[i])
 	{
-		free(&spl[i]);
+		free(spl[i]);
 		i++;
 	}
 	free(spl);
@@ -62,7 +62,7 @@ void	ft_parsing(t_list **a, char **argv, int argc)
 	{
 		spl = ft_split(argv[i], ' ');
 		j = 0;
-		while (spl[j])
+		while (spl[j] != 0)
 		{
 			if (!ft_checkerros(spl[j], a))
 			{
@@ -70,13 +70,14 @@ void	ft_parsing(t_list **a, char **argv, int argc)
 				ft_lstclear(a, ft_freecontent);
 				exit (1);
 			}
-			ft_lstadd_back(a, ft_lstnew(spl[j]));
+			ft_lstadd_back(a, ft_lstnew(ft_strdup(spl[j])));
 			j ++;
 		}
+		ft_free_spl(spl);
 		i++;
 	}
 }
-//test pour le git push
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
@@ -89,6 +90,7 @@ int	main(int argc, char **argv)
 		return (ft_lstclear(&a, ft_freecontent), 0);
 	ft_simplified(&a);
 	ft_algorithme_03(&a, &b);
-	return (ft_lstclear(&a, ft_freecontent),
-		ft_lstclear(&b, ft_freecontent), 0);
+	ft_lstclear(&a, ft_freecontent);
+	ft_lstclear(&b, ft_freecontent);
+	return (0);
 }

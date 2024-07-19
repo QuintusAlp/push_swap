@@ -6,13 +6,13 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 10:43:13 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/04/26 11:29:15 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:34:54 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp2(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
@@ -28,21 +28,21 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 int	ft_convertissor(va_list args, const char *str)
 {
-	if (!ft_strncmp(str, "%c", 2))
+	if (!ft_strncmp2(str, "%c", 2))
 		return (ft_display_char(va_arg(args, int)));
-	else if (!ft_strncmp(str, "%s", 2))
+	else if (!ft_strncmp2(str, "%s", 2))
 		return (ft_display_str(va_arg(args, char *)));
-	else if (!ft_strncmp(str, "%i", 2) || !ft_strncmp(str, "%d", 2))
+	else if (!ft_strncmp2(str, "%i", 2) || !ft_strncmp(str, "%d", 2))
 		return (ft_display_int(va_arg(args, int)));
-	else if (!ft_strncmp(str, "%u", 2))
+	else if (!ft_strncmp2(str, "%u", 2))
 		return (ft_display_unsignedint(va_arg(args, int)));
-	else if (!ft_strncmp(str, "%x", 2))
+	else if (!ft_strncmp2(str, "%x", 2))
 		return (ft_display_exadecimal(va_arg(args, int), 'm'));
-	else if (!ft_strncmp(str, "%X", 2))
+	else if (!ft_strncmp2(str, "%X", 2))
 		return (ft_display_exadecimal(va_arg(args, int), 'M'));
-	else if (!ft_strncmp(str, "%%", 2))
+	else if (!ft_strncmp2(str, "%%", 2))
 		return (ft_display_persent());
-	else if (!ft_strncmp(str, "%p", 2))
+	else if (!ft_strncmp2(str, "%p", 2))
 		return (ft_display_adress(va_arg(args, unsigned long)));
 	return (0);
 }

@@ -14,6 +14,7 @@
 
 void	ft_last3(t_list **a, t_list **b)
 {
+
 	int	element1;
 	int	element2;
 	int	element3;

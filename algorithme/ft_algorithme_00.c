@@ -73,7 +73,7 @@ void	ft_algorithme_00(t_list **a, t_list **b)
 	int	k;
 
 	k = 0;
-	while (*a != NULL && k < 2)
+	while (*a != NULL && ft_lstsize(*a) != 3)
 	{
 		minindex = ft_elementindex(ft_findmin(a), a);
 		i = ft_check_begin_min(a);
@@ -89,7 +89,6 @@ void	ft_algorithme_00(t_list **a, t_list **b)
 		k++;
 	}
 	ft_last3(a, b);
-	k = -1;
-	while (k++, *b != NULL && k < 2)
+	while (k--, *b != NULL && k != -1)
 		ft_instructions("pa", a, b);
 }

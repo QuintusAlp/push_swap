@@ -14,16 +14,19 @@
 
 void	ft_swap(t_list **lst)
 {
-	int			ssub;
+	int				ssub;
+	char			*scontent;
 	t_list		*next_element;
 
 	if (!lst)
 		return ;
 	ssub = (*lst)->simplified;
+	scontent = (*lst)->content;
 	next_element = (*lst)->next;
 	(*lst)->content = next_element->content;
 	(*lst)->simplified = next_element->simplified;
 	next_element->simplified = ssub;
+	next_element->content = scontent;
 }
 
 void	ft_push(t_list **a, t_list **b)
