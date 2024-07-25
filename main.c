@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:51:34 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/18 10:27:51 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:21:03 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	ft_istrim(t_list **a)
 
 void	ft_freecontent(void *content)
 {
-	//(void) content;
 	free(content);
 }
 
@@ -42,7 +41,7 @@ void	ft_free_spl(char **spl)
 	if (!spl)
 		return ;
 	i = 0;
-	while(spl[i])
+	while (spl[i])
 	{
 		free(spl[i]);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 20:05:58 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/07/15 14:05:55 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:27:06 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_last3(t_list **a, t_list **b)
 {
-
 	int	element1;
 	int	element2;
 	int	element3;

@@ -6,7 +6,7 @@
 /*   By: qalpesse <qalpesse@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:11:08 by qalpesse          #+#    #+#             */
-/*   Updated: 2024/06/22 10:56:56 by qalpesse         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:26:17 by qalpesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_swap(t_list **lst)
 {
-	int				ssub;
-	char			*scontent;
+	int			ssub;
+	char		*scontent;
 	t_list		*next_element;
 
 	if (!lst)
